@@ -1,6 +1,7 @@
 package com.example.egm.controller;
 
 
+import com.example.egm.exception.MyException;
 import com.example.egm.model.Banka;
 import com.example.egm.model.User;
 import org.springframework.http.HttpStatus;
@@ -47,7 +48,7 @@ public class BankaController {
 	public ResponseEntity<?> test() throws Exception {
 
 		if(true)
-			throw new Exception("Burada bir hata var!");
+			throw new MyException("Burada bir hata var!");
 
 		return ResponseEntity.ok(new Banka());
 	}

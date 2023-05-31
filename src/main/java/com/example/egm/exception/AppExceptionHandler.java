@@ -28,4 +28,19 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 
 	}
 
+
+	@ExceptionHandler(value = MyException.class)
+	public ResponseEntity<?> handlerException(Exception ex, WebRequest request) {
+
+		String errMsgDesc = ex.getLocalizedMessage();
+
+		if(errMsgDesc == null) errMsgDesc = ex.toString();
+
+		ErrorMessage errorMessage = new ErrorMessage(new Date(),errMsgDesc);
+		return new ResponseEntity<>(
+				errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR
+		);
+
+	}
+
 }
