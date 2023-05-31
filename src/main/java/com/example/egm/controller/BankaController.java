@@ -42,4 +42,14 @@ public class BankaController {
 		return user;
 	}
 
+
+	@GetMapping("/test")
+	public ResponseEntity<?> test() throws Exception {
+
+		if(true)
+			throw new Exception("Burada bir hata var!");
+
+		return ResponseEntity.ok(new Banka());
+	}
+
 }
